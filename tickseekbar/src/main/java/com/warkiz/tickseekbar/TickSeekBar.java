@@ -570,7 +570,7 @@ public class TickSeekBar extends View {
             return;
         }
         mTextPaint.setColor(mThumbTextColor);
-        canvas.drawText(getProgressString(mProgress) + mThumbTextUnit, getThumbCenterX(), mThumbTextY, mTextPaint);
+        canvas.drawText(getProgressString(mProgress), getThumbCenterX(), mThumbTextY, mTextPaint);
     }
 
     /**
@@ -1365,9 +1365,9 @@ public class TickSeekBar extends View {
      */
     private String getProgressString(float progress) {
         if (mIsFloatProgress) {
-            return FormatUtils.fastFormat(progress, mScale);
+            return FormatUtils.fastFormat(progress, mScale) + mThumbTextUnit;
         }
-        return String.valueOf(Math.round(progress));
+        return String.valueOf(Math.round(progress)) + mThumbTextUnit;
     }
 
     private boolean isTouchThumb(float mX) {
